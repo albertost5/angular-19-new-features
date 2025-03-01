@@ -1,8 +1,11 @@
 import {Component} from '@angular/core';
 import {RouterModule} from '@angular/router';
+import {SideMenuComponent} from '@shared/side-menu/side-menu.component';
+
 
 @Component({
-  imports: [RouterModule],
+  imports: [RouterModule, SideMenuComponent],
+  standalone: true,
   templateUrl: './dashboard.component.html',
   styles: ``
 })
