@@ -1,1 +1,75 @@
-<p>control-flow works!</p>
+<app-title title="Control Flow" />
+
+<!-- @if @else -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-3">
+  <div class="bg-white rounded shadow p-10">
+    <h2 class="text-2xl font-bold mb-5">
+      if value: {{ showContent() }}
+    </h2>
+    <button class="p-2 bg-blue-500 rounded text-white"
+      (click)="toggleContent()"
+    >
+      Toggle it!
+    </button>
+  </div>
+
+  @if (showContent()) {
+    <p>Hello World!</p>
+  } @else {
+    <p>*****</p>
+  }
+
+  <!-- @switch -->
+  <div class="bg-white rounded shadow p-10">
+    <h2 class="text-2xl font-bold mb-5">
+      List: {{ frameworks() }}
+    </h2>
+    <button class="p-2 bg-blue-500 rounded text-white"
+            (click)="randomFramework()"
+    >
+      Show framework
+    </button>
+  </div>
+  @switch (randomNumber()) {
+    @case(0) {
+      {{ frameworks()[randomNumber()] }}
+    }
+    @case(1) {
+      {{ frameworks()[randomNumber()] }}
+    }
+    @case(2) {
+      {{ frameworks()[randomNumber()] }}
+    }
+    @case(3) {
+      {{ frameworks()[randomNumber()] }}
+    }
+    @case(4) {
+      {{ frameworks()[randomNumber()] }}
+    }
+    @default {
+      {{ 'Click the button to display a framework' }}
+    }
+  }
+
+  <!-- @for -->
+  <div class="bg-white rounded shadow p-10">
+    <ul>
+      @for (framework of frameworks(); track $index; let odd = $odd; let even = $even; let first = $first; let last = $last) {
+        <li [class]="{
+          'bg-red-100': !last && !first && !odd,
+          'bg-yellow-100': odd,
+          'bg-green-100': last || first
+        }">{{ $index + 1 }}. {{ framework }}</li>
+      }
+    </ul>
+  </div>
+  <div class="bg-white rounded shadow p-10">
+    <ul>
+      @for (framework of emptyFrameworks(); track $index) {
+        <li>{{ $index + 1 }}. {{ framework }}</li>
+      } @empty {
+        <li>There are not frameworks to be displayed.</li>
+      }
+    </ul>
+  </div>
+</section>
