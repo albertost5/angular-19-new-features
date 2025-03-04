@@ -1,1 +1,16 @@
-<p>user works!</p>
+<app-title [title]="fullName()" />
+
+
+@if(user()) {
+  <section>
+    <img
+      [srcset]="user()!.avatar"
+    />
+    <div>
+      <h3>{{user()!.first_name}} {{user()!.last_name}}</h3>
+      <p>{{user()!.email}}</p>
+    </div>
+  </section>
+} @else {
+  <h3>Loading...</h3>
+}
