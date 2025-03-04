@@ -12,13 +12,13 @@
       Toggle it!
     </button>
   </div>
-
-  @if (showContent()) {
-    <p>Hello World!</p>
-  } @else {
-    <p>*****</p>
-  }
-
+  <div class="bg-white rounded shadow p-2">
+    @if (showContent()) {
+      <p>Hello World!</p>
+    } @else {
+      <p>*****</p>
+    }
+  </div>
   <!-- @switch -->
   <div class="bg-white rounded shadow p-10">
     <h2 class="text-2xl font-bold mb-5">
@@ -30,27 +30,28 @@
       Show framework
     </button>
   </div>
-  @switch (randomNumber()) {
-    @case(0) {
-      {{ frameworks()[randomNumber()] }}
+  <div class="bg-white rounded shadow p-2">
+    @switch (randomNumber()) {
+      @case(0) {
+        {{ frameworks()[randomNumber()] }}
+      }
+      @case(1) {
+        {{ frameworks()[randomNumber()] }}
+      }
+      @case(2) {
+        {{ frameworks()[randomNumber()] }}
+      }
+      @case(3) {
+        {{ frameworks()[randomNumber()] }}
+      }
+      @case(4) {
+        {{ frameworks()[randomNumber()] }}
+      }
+      @default {
+        {{ 'Click the button to display a framework' }}
+      }
     }
-    @case(1) {
-      {{ frameworks()[randomNumber()] }}
-    }
-    @case(2) {
-      {{ frameworks()[randomNumber()] }}
-    }
-    @case(3) {
-      {{ frameworks()[randomNumber()] }}
-    }
-    @case(4) {
-      {{ frameworks()[randomNumber()] }}
-    }
-    @default {
-      {{ 'Click the button to display a framework' }}
-    }
-  }
-
+  </div>
   <!-- @for -->
   <div class="bg-white rounded shadow p-10">
     <ul>
@@ -63,7 +64,7 @@
       }
     </ul>
   </div>
-  <div class="bg-white rounded shadow p-10">
+  <div class="bg-white rounded shadow p-2">
     <ul>
       @for (framework of emptyFrameworks(); track $index) {
         <li>{{ $index + 1 }}. {{ framework }}</li>
